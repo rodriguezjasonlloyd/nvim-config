@@ -51,6 +51,9 @@ opt.undofile = true -- Enable persistent undo
 opt.updatetime = 250 -- Faster completion updates
 opt.timeoutlen = 300 -- Reduce timeout for faster response
 
+-- Session
+vim.o.sessionoptions = "blank,buffers,curdir,folds,localoptions"
+
 -- Terminal
 local shell = "pwsh"
 if vim.fn.executable(shell) == 1 then
