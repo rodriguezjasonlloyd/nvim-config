@@ -3,6 +3,8 @@ return {
     config = function()
         local lspconfig = require("lspconfig")
 
+        lspconfig.jsonls.setup({})
+
         lspconfig.lua_ls.setup({
             settings = {
                 Lua = {
@@ -16,7 +18,5 @@ return {
         lspconfig.luau_lsp.setup({})
 
         lspconfig.ts_ls.setup({})
-
-        lspconfig.jsonls.setup({})
     end,
 }
