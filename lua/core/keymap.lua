@@ -24,25 +24,13 @@ keymap("n", "<leader>bd", ":bd<CR>", opts)
 -- File Operations
 keymap("n", "<leader>w", ":w<CR>", opts) -- Save
 keymap("n", "<leader>q", ":q<CR>", opts) -- Quit
-keymap("n", "<leader>Q", ":qa!<CR>", opts) -- Quit all
+keymap("n", "<leader>Q", ":q!<CR>", opts) -- Quit all
 
 -- Move Lines
 keymap("n", "<A-j>", ":m .+1<CR>==", opts)
 keymap("n", "<A-k>", ":m .-2<CR>==", opts)
 keymap("v", "<A-j>", ":m '>+1<CR>gv=gv", opts)
 keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
-
--- Terminal
-keymap("n", "<leader>th", ":15split | terminal<CR>", opts) -- Horizontal terminal
-keymap("n", "<leader>tv", ":vsplit | terminal<CR>", opts) -- Vertical terminal
-keymap("n", "<leader>tt", ":tabnew | terminal<CR>", opts) -- Terminal in new tab
-
--- Terminal Mode
-keymap("t", "<Esc>", "<C-\\><C-n>", opts) -- Exit terminal mode
-keymap("t", "<C-h>", "<C-\\><C-n><C-w>h", opts) -- Navigate left
-keymap("t", "<C-j>", "<C-\\><C-n><C-w>j", opts) -- Navigate down
-keymap("t", "<C-k>", "<C-\\><C-n><C-w>k", opts) -- Navigate up
-keymap("t", "<C-l>", "<C-\\><C-n><C-w>l", opts) -- Navigate right
 
 -- Telescope
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
