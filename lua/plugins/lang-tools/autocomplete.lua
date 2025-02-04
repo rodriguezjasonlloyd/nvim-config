@@ -6,9 +6,12 @@ return {
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-cmdline",
         "hrsh7th/nvim-cmp",
+        "rafamadriz/friendly-snippets",
     },
     config = function()
         local cmp = require("cmp")
+
+        require("luasnip.loaders.from_vscode").lazy_load()
 
         cmp.setup({
             completion = {
