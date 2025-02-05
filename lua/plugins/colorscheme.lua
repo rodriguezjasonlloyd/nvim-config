@@ -1,9 +1,10 @@
 return {
-    "folke/tokyonight.nvim",
+    "shaunsingh/nord.nvim",
+    cond = true,
     lazy = false,
-    priority = 1000,
     opts = {},
     config = function()
-        vim.cmd("colorscheme tokyonight")
+        vim.cmd("colorscheme nord")
     end,
+    priority = 1000,
 }
