@@ -1,5 +1,6 @@
 return {
     "neovim/nvim-lspconfig",
+    cond = true,
     event = { "BufReadPre", "BufNewFile" },
     config = function()
         local lspconfig = require("lspconfig")
@@ -31,14 +32,16 @@ return {
                 lspconfig["luau_lsp"].setup({})
             end,
             ["ts_ls"] = function()
-                local function organize_imports()
-                    local params = {
-                        command = "_typescript.organizeImports",
-                        arguments = { vim.api.nvim_buf_get_name(0) },
-                        title = "",
-                    }
+                lspconfig["ts_ls"].setup({
+                    capabilities = capabilities,
+                })
+                vim.keymap.set("n", "<leader>oi", function()
                     for _, client in ipairs(vim.lsp.get_active_clients({ bufnr = 0 })) do
-                        client:exec_cmd(params, { bufnr = 0 }, function(err, result)
+                        client:exec_cmd({
+                            command = "_typescript.organizeImports",
+                            arguments = { vim.api.nvim_buf_get_name(0) },
+                            title = "",
+                        }, { bufnr = 0 }, function(err)
                             if err then
                                 vim.notify("Error organizing imports: " .. err.message, vim.log.levels.ERROR)
                             else
@@ -46,11 +49,7 @@ return {
                             end
                         end)
                     end
-                end
-                lspconfig["ts_ls"].setup({
-                    capabilities = capabilities,
-                })
-                vim.keymap.set("n", "<leader>oi", organize_imports, { noremap = true, silent = true })
+                end, { noremap = true, silent = true })
             end,
         })
     end,
