@@ -1,5 +1,6 @@
 return {
     "nvim-lualine/lualine.nvim",
+    cond = true,
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
         options = {
